@@ -11,12 +11,8 @@ body {
 
 #sky {
     height: 60vh;
-    background: radial-gradient(
-        circle,
-        #1b1938,
-        #11111d,
-        #080616
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: url('../assets/images/space.jpg');
+    background-size: contain;
 }
 
 #sun {
@@ -64,9 +60,11 @@ body {
 #grid-scroller {
     background: #111;
     background: linear-gradient(#7e1d86 0%, #000 20%);
+    border-top: solid 2px #ff00c1;
     height: 40vh;
     perspective: 10vh;
     overflow: hidden;
+    box-shadow: 0px -13px 44px 13px #7e1d86;
 
     #grid {
         transform: rotateX(18deg) scale3d(5, 3, 3);
