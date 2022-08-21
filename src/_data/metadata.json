@@ -1,0 +1,25 @@
+{
+  "title": "Joonas Reinikka",
+  "subTitle": "Full-stack developer",
+  "url": "https://joonas.dev",
+  "language": "en",
+  "description": "",
+  "feed": {
+    "subtitle": "",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://joonas.dev"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://joonas.dev/feed/feed.json"
+  },
+  "author": {
+    "name": "Joonas Reinikka",
+    "email": "hello@joonas.dev",
+    "url": "https://joonas.dev"
+  },
+  "settings": {
+    "paginate": 6
+  }
+}

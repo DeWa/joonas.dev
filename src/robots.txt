@@ -1,0 +1,4 @@
+Sitemap: https://joonas.dev/sitemap.xml
+
+User-agent: *
+Disallow:

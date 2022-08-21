@@ -1,0 +1,18 @@
+{% for post in postlist | reverse %}
+  <article class="postlist-post">
+    <div></div>
+    <div>
+      <p>{{post.data.date | readableDate}}</p>
+      <a href="{{ post.url | url }}">
+        <h1>{{post.data.title}}</h1>
+      </a>
+      <div>
+        {% for tag in latestPost.data.tags %}
+          <a href="{{ '/tags/' | url }}{{ tag }}">
+            <span>{{tag}}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+{% endfor %}
