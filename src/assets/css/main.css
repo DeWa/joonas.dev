@@ -1,0 +1,154 @@
+html {
+  background: rgb(0, 19, 74);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 19, 74, 1) 33%,
+    rgba(35, 3, 41, 1) 96%
+  );
+}
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.logo {
+  font-family: 'heyaugust', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 100;
+}
+
+.joonas {
+  color: hsl(231, 71%, 49%);
+  text-shadow: hsla(232, 36%, 55%, 0.98) 0px 0px 39px;
+}
+
+.reinikka {
+  color: hsl(0, 0%, 93%);
+  text-shadow: hsla(0, 0%, 93%, 0.9) 0px 0px 39px;
+}
+
+.navigation-list li {
+  display: inline;
+  color: white;
+  font-weight: 900;
+  font-family: 'Montserrat', monospace;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+
+/* Poster */
+#poster {
+  display: flex;
+  padding-top: 5rem;
+}
+
+.poster-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Montserrat', monospace;
+  color: hsl(34, 78%, 91%);
+  flex-basis: 40%;
+  font-weight: 900;
+}
+.poster-image {
+  flex-basis: 40%;
+}
+.poster-image picture img {
+  height: auto;
+  width: 100%;
+}
+.social-media-tab {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+/* Social icons */
+.social-icon {
+  height: 60px;
+  width: 60px;
+  padding: 1rem;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+}
+.linkedin {
+  background: linear-gradient(#143259, #143b6e);
+  border: #0e284a 2px solid;
+  box-shadow: 0 0 7px 1px #143b6e;
+}
+.linkedin svg {
+  fill: #fff;
+}
+.github {
+  background: linear-gradient(#212121, #000000);
+  border: #121212 2px solid;
+  box-shadow: 0 0 7px 1px #3b3b3b;
+}
+.github svg {
+  fill: rgb(255, 255, 255);
+}
+.twitter {
+  background: linear-gradient(#005d97, #004570);
+  border: #0b354f 2px solid;
+  box-shadow: 0 0 7px 1px #005d97;
+}
+.twitter svg {
+  fill: #1da1f2;
+}
+.email {
+  background: linear-gradient(#75004e, #5d003e);
+  border: #4c0031 2px solid;
+  box-shadow: 0 0 7px 1px #75004e;
+}
+.email svg {
+  fill: #ff00aa;
+}
+
+/* Divider */
+.divider {
+  width: 100vw;
+  border: #0049be 1px solid;
+  box-shadow: 0 0 7px 1px #0049be;
+}
+
+/* Postlist */
+.postlist-post {
+  height: 80px;
+  width: 80px;
+}
+
+@media (max-width: 1024px) {
+  #poster {
+    flex-direction: column;
+  }
+
+  .poster-text {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .social-media-tab {
+    margin-top: 3rem;
+    justify-content: center;
+  }
+
+  .social-media-tab ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-media-tab li {
+    margin-right: 1rem;
+  }
+}

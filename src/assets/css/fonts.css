@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'heyaugust';
+  src: url('/assets/fonts/heyaugust.woff2') format('woff2'),
+    url('/assets/fonts/heyaugust.woff') format('woff'),
+    url('/assets/fonts/heyaugust.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quattrocento';
+  src: url('/assets/fonts/Quattrocento-Bold.woff2') format('woff2'),
+    url('/assets/fonts/Quattrocento-Bold.woff') format('woff'),
+    url('/assets/fonts/Quattrocento-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quattrocento';
+  src: url('/assets/fonts/Quattrocento.woff2') format('woff2'),
+    url('/assets/fonts/Quattrocento.woff') format('woff'),
+    url('/assets/fonts/Quattrocento.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
