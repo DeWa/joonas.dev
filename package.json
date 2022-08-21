@@ -1,0 +1,33 @@
+{
+  "name": "joonas.dev",
+  "version": "1.0.0",
+  "description": "Personal site",
+  "main": "_site/index.html",
+  "scripts": {
+    "build": "eleventy",
+    "watch": "eleventy --watch",
+    "serve": "eleventy --serve",
+    "debug": "DEBUG=* eleventy",
+    "start": "npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeWa/joonas.dev"
+  },
+  "author": "Joonas Reinikka <joonas.reinikka@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DeWa/joonas.dev/issues"
+  },
+  "homepage": "https://github.com/DeWa/joonas.dev#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-img": "^2.0.0",
+    "@11ty/eleventy-navigation": "^0.3.2",
+    "@11ty/eleventy-plugin-rss": "^1.1.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "autoprefixer": "^10.4.4",
+    "markdown-it-anchor": "^8.4.1",
+    "postcss-cli": "^9.1.0"
+  }
+}
