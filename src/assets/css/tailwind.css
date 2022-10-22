@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Quattrocento', system-ui, sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Montserrat', ui-sans-serif, sans-serif;
+  }
+}
+
+@font-face {
+  font-family: 'Quattrocento';
+  src: url('/assets/fonts/Quattrocento-Bold.woff2') format('woff2'),
+    url('/assets/fonts/Quattrocento-Bold.woff') format('woff'),
+    url('/assets/fonts/Quattrocento-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quattrocento';
+  src: url('/assets/fonts/Quattrocento.woff2') format('woff2'),
+    url('/assets/fonts/Quattrocento.woff') format('woff'),
+    url('/assets/fonts/Quattrocento.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@keyframes loop {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.logo-bg {
+  animation: loop 15s ease infinite;
+  background: linear-gradient(
+    177deg,
+    #2712db 0%,
+    #3154e4 15%,
+    #2416dd 16%,
+    #2f5ae7 17%,
+    #355eeb 23%,
+    #432ab9 24%,
+    #e74cba 25%,
+    #d758ce 34%,
+    #8e34b2 35%,
+    #6335be 36%,
+    #f06ac3 40%,
+    #d6389e 41%,
+    #2c25e4 42%,
+    #f178c8 50%,
+    #2712db 51%,
+    #3154e4 60%,
+    #2416dd 61%,
+    #2f5ae7 62%,
+    #355eeb 78%,
+    #432ab9 79%,
+    #e74cba 80%,
+    #d758ce 84%,
+    #8e34b2 85%,
+    #6335be 86%,
+    #f06ac3 90%,
+    #d6389e 91%,
+    #2c25e4 92%,
+    #f178c8 100%
+  );
+  background-size: 200% 200%;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  left: -0.12rem;
+  top: -0.12rem;
+}
+
+.logo {
+  background: linear-gradient(
+    180deg,
+    #a02291 0%,
+    #18156a 80%,
+    rgb(41, 28, 91) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navbar menu */
+.menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  margin-top: 50px;
+  left: 0;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu > li {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0.5em 0;
+  width: 100%;
+  color: white;
+  background-color: rgba(0, 19, 74, 1);
+  font-family: Permanent Marker, cursive, sans-serif;
+}
+
+.menu-button-container {
+  display: flex;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle ~ .menu li {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+#menu-toggle:checked ~ .menu li {
+  border: 1px solid rgba(35, 3, 41, 1);
+  height: 2.5em;
+  padding: 0.5em;
+  transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(0, 19, 74, 1);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
