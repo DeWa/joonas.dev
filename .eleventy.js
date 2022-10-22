@@ -8,19 +8,25 @@ const markdownItAnchor = require('markdown-it-anchor');
 const Image = require('@11ty/eleventy-img');
 const path = require('path');
 
-async function imageShortcodeHTML(src, alt, sizes) {
-  let metadata = await Image(src, {
-    widths: [400, 800, 1280],
+async function imageShortcodeHTML(src, alt, sizes, cls) {
+  const options = {
+    urlPath: '/img/',
+    outputDir: './src/img',
+    widths: [400, 800, 1000],
     formats: ['avif', 'png'],
-  });
+  };
+
+  Image(src, options);
 
   let imageAttributes = {
+    class: cls || '',
     alt,
     sizes,
     loading: 'lazy',
     decoding: 'async',
   };
 
+  let metadata = Image.statsSync(src, options);
   // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
   return Image.generateHTML(metadata, imageAttributes);
 }
@@ -34,12 +40,11 @@ async function imageShortCode(src) {
 }
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy('./img');
-  eleventyConfig.addPassthroughCopy('./src/assets/css');
   eleventyConfig.addPassthroughCopy('./src/assets/fonts');
   eleventyConfig.addPassthroughCopy(
     './src/posts/**/*.{png,gif,jpg,webp,avi,avif,mp4,mp3}'
   );
+  eleventyConfig.addPassthroughCopy('./src/img');
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
