@@ -90,9 +90,10 @@ module.exports = function (eleventyConfig) {
       (tag) => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1
     );
   }
-
   eleventyConfig.addFilter('filterTagList', filterTagList);
-
+  eleventyConfig.addFilter('log', (value) => {
+    console.log(value);
+  });
   eleventyConfig.addCollection('posts', require('./lib/collections/posts'));
   eleventyConfig.addCollection('tagList', require('./lib/collections/tagList'));
   eleventyConfig.addCollection(
