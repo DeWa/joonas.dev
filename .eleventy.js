@@ -12,7 +12,7 @@ async function imageShortcodeHTML(src, alt, sizes, cls) {
   const options = {
     urlPath: '/img/',
     outputDir: './src/img',
-    widths: [400, 800, 1000],
+    widths: [200, 400, 800, 1000],
     formats: ['avif', 'png'],
   };
 
@@ -33,10 +33,17 @@ async function imageShortcodeHTML(src, alt, sizes, cls) {
 
 async function imageShortCode(src) {
   let metadata = await Image(src, {
-    widths: [400, 800, 1280],
-    formats: ['avif', 'webp', 'jpg'],
+    urlPath: '/img/',
+    outputDir: './src/img',
+    widths: [200, 400, 800, 1000],
+    formats: ['avif', 'png'],
   });
   return metadata;
+}
+
+async function getBackgroundImage(src, extension, size) {
+  const image = await imageShortCode(src);
+  return image[extension].find((i) => i.width === size).url;
 }
 
 module.exports = function (eleventyConfig) {
@@ -79,6 +86,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addNunjucksAsyncShortcode('imageHTML', imageShortcodeHTML);
   eleventyConfig.addNunjucksAsyncShortcode('image', imageShortCode);
+  eleventyConfig.addNunjucksAsyncShortcode('imageBg', getBackgroundImage);
 
   // Return the smallest number argument
   eleventyConfig.addFilter('min', (...numbers) => {
