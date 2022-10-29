@@ -170,3 +170,6 @@ dist
 
 # SvelteKit build / generate output
 .svelte-kit
+
+# Generated images
+/src/img
