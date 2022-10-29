@@ -3,32 +3,43 @@ layout: layouts/base.njk
 templateClass: tmpl-post
 ---
 {% include "header.njk" %}
-<article class="prose lg:prose-xl container mx-auto p-8 bg-slate-200 shadow-md">
-  <h1>{{ title }}</h1>
-
-  <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
-  {%- for tag in tags | filterTagList -%}
-    {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
-    <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-  {%- endfor %}
-
-  {{ content | safe }}
-
-  {%- if collections.posts %}
-    {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-    {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
-    {%- if nextPost or previousPost %}
-      <hr>
-      <ul>
-        {%- if nextPost %}
-          <li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
-          </li>
-        {% endif %}
-        {%- if previousPost %}
-          <li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
-          </li>
-        {% endif %}
-      </ul>
-    {%- endif %}
-  {%- endif %}
+<article class="prose lg:prose-xl container mx-auto bg-slate-200 shadow-md">
+  <div class="bg-cover w-full h-96" style="background-image: url('{% imageBg coverPath, 'png', 800 %}')"></div>
+  <section class="px-4 md:px-8 pt-4 pb-8">
+    <h1>{{ title }}</h1>
+    <time class="inline font-header" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+    <div>
+      {% for tag in tags | filterTagList %}
+        <a class="no-underline" href="{{ '/tags/' | url }}{{ tag }}">
+          <span class="text-xs font-header inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline text-white rounded-full bg-gradient-to-r from-blue-700 to-fuchsia-800">{{tag}}</span>
+        </a>
+      {% endfor %}
+    </div>
+    {{ content | safe }}
+    {% if collections.posts %}
+      {% set nextPost = collections.posts | getNextCollectionItem(page) %}
+      {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+      {% if nextPost or previousPost %}
+        <hr>
+        <div class="flex list-none justify-between pl-0">
+          {% if nextPost %}
+            <div>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
+            </div>
+          {% endif %}
+          {% if previousPost %}
+            <div>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
+    <div>
+      <script src="https://utteranc.es/client.js"
+        repo="DeWa/joonas.dev"
+        issue-term="pathname"
+        theme="icy-dark"
+        crossorigin="anonymous"
+        async></script>
+    </div>
+  </section>
 </article>
