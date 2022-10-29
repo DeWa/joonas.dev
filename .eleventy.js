@@ -108,6 +108,10 @@ module.exports = function (eleventyConfig) {
     'pagedPostsByTag',
     require('./lib/collections/pagedPostsByTag')
   );
+  eleventyConfig.addCollection(
+    'postsByYearAndMonth',
+    require('./lib/collections/postsByYearAndMonth')
+  );
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
