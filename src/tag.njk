@@ -1,5 +1,5 @@
 ---
-layout: layouts/home.njk
+layout: layouts/base.njk
 eleventyExcludeFromCollections: true
 pagination:
     data: collections.pagedPostsByTag
@@ -9,17 +9,21 @@ permalink: "tags/{{ paged.tagName }}/{% if paged.number > 1 %}{{ paged.number }}
 eleventyComputed:
     title: "Tagged with \"{{ paged.tagName | capitalize }}\""
 ---
-
-<div class="mb-8 text-center">
-  <h3 class="text-xl font-medium text-gray-700 my-0">Tagged with</h3>
-  <h1 class="text-4xl font-medium leading-normal mt-0">{{ paged.tagName | capitalize }}</h1>
-</div>
-{% set postlist = paged.posts | head(-6) %}
-<div class="flex flex-wrap -mx-2"></div>
-
-{% if collections.tagList[paged.tagName] > site.paginate %}
-  <div class="mt-3 flow-root">
-    <a href="{% if not paged.first %}{{ pagination.href.previous | url }}{% else %}javascript:void(0){% endif %}" class="float-left bg-white font-semibold py-2 px-4 border rounded shadow-md text-gray-800 {% if not paged.first %}cursor-pointer hover:bg-gray-100{% else %}cursor-default text-opacity-75{% endif %}">Previous</a>
-    <a href="{% if not paged.last %}{{ pagination.href.next | url }}{% else %}javascript:void(0){% endif %}" class="float-right bg-white font-semibold py-2 px-4 border rounded shadow-md text-gray-800 {% if not paged.last %}cursor-pointer hover:bg-gray-100{% else %}cursor-default text-opacity-75{% endif %}">Next</a>
+{% include "header.njk" %}
+<section class="px-8 md:px-16 pt-4 md:pt-20 text-slate-200 font-header">
+  <div class="mb-8 text-center">
+    <h3 class="text-xl font-medium text-slate-200 my-0">Tagged with</h3>
+    <h1 class="text-4xl font-medium text-slate-300 leading-normal mt-0">{{ paged.tagName | capitalize }}</h1>
   </div>
-{% endif %}
+  {% set postlist = paged.posts | head(-6) %}
+  <div class="flex flex-wrap -mx-2">
+    {% include "postslist.njk" %}
+  </div>
+
+  {% if collections.tagList[paged.tagName] > site.paginate %}
+    <div class="mt-3 flow-root">
+      <a href="{% if not paged.first %}{{ pagination.href.previous | url }}{% else %}javascript:void(0){% endif %}" class="float-left bg-white font-semibold py-2 px-4 border rounded shadow-md text-gray-800 {% if not paged.first %}cursor-pointer hover:bg-gray-100{% else %}cursor-default text-opacity-75{% endif %}">Previous</a>
+      <a href="{% if not paged.last %}{{ pagination.href.next | url }}{% else %}javascript:void(0){% endif %}" class="float-right bg-white font-semibold py-2 px-4 border rounded shadow-md text-gray-800 {% if not paged.last %}cursor-pointer hover:bg-gray-100{% else %}cursor-default text-opacity-75{% endif %}">Next</a>
+    </div>
+  {% endif %}
+</section>
