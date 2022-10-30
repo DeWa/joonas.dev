@@ -4,9 +4,9 @@ eleventyNavigation:
   key: Blog
 ---
 {% include "header.njk" %}
-<section class="px-8 md:px-16 pt-4 md:pt-20 text-slate-200 font-header font-extrabold">
+<section class="px-8 md:px-16 pt-4 md:pt-20 text-slate-200 font-header">
   <h1 class="text-slate-200 uppercase font-bold py-3">Latest posts</h1>
-  <section class="flex flex-col md:flex-row flex-wrap justify-center items-center">
+  <section class="flex flex-col md:flex-row flex-wrap justify-center items-center font-normal">
     {% set postlist = collections.posts | head(-4) %}
     {% set postslistCounter = collections.posts | length %}
     {% include "postslist.njk" %}
@@ -22,7 +22,7 @@ eleventyNavigation:
             {% for post in posts %}
               <a href="{{ post.url | url }}">
                 <article class="rounded bg-cover w-72 h-60 grid content-end m-5" style="background-image: url('{% imageBg post.data.coverPath, 'png', 200 %}')">
-                  <div class="backdrop-blur-sm bg-white/30 text-slate-200 p-2 rounded-b">
+                  <div class="backdrop-blur-sm bg-white/30 text-slate-200 p-2 rounded-b font-normal">
                     <p class="text-xs font-header">{{post.data.date | readableDate}}</p>
                     <h1>{{post.data.title}}</h1>
                     {% for tag in post.data.tags %}
