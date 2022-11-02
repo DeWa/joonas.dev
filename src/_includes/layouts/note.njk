@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-note
+---
+{% include "header.njk" %}
+<article class="prose lg:prose-xl container mx-auto bg-slate-200 shadow-md">
+  <section class="px-4 md:px-8 pt-4 pb-8">
+    <h1>{{ title }}</h1>
+    <time class="inline font-header" datetime="{{ updated | htmlDateString }}">Last updated: {{ updated | readableDate }}</time>
+    {{ content | safe }}
+  </section>
+</article>

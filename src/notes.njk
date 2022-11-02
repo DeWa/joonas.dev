@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Notes
+---
+{% include "header.njk" %}
+<section class="px-8 md:px-16 pt-4 md:pt-20 text-slate-200 font-header">
+  <div class="flex flex-col flex-wrap justify-center items-center font-normal">
+    {% set categories = collections.noteCategories %}
+    {% for category in categories %}
+      <div class="py-3">
+        {% set notes = collections.notesByCategory[category] %}
+        <h1 class="uppercase font-header font-bold text-2xl text-center">{{category}}</h1>
+        {% for note in notes %}
+          <a href="{{ note.url | url }}" class="underline text-center">
+            {{note.data.title}}
+          </a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
