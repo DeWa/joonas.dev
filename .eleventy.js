@@ -112,6 +112,20 @@ module.exports = function (eleventyConfig) {
     'postsByYearAndMonth',
     require('./lib/collections/postsByYearAndMonth')
   );
+  eleventyConfig.addCollection('noteCategories', (col) => {
+    return col
+      .getFilteredByGlob('src/notes/**/*.md')
+      .map((n) => n.data.category)
+      .sort((a, b) => {
+        if (a > b) return 1;
+        else if (a < b) return -1;
+        else return 0;
+      });
+  });
+  eleventyConfig.addCollection(
+    'notesByCategory',
+    require('./lib/collections/notesByCategory')
+  );
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
