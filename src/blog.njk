@@ -4,9 +4,9 @@ eleventyNavigation:
   key: Blog
 ---
 {% include "header.njk" %}
-<section class="px-8 md:px-16 pt-4 md:pt-20 text-slate-200 font-header font-extrabold">
-  <h1 class="text-slate-200 uppercase font-bold py-3">Latest posts</h1>
-  <section class="flex flex-col md:flex-row flex-wrap justify-center items-center">
+<section class="px-8 md:px-16 pt-4 md:pt-20 text-slate-200 font-header">
+  <h1 class="text-slate-200 uppercase font-bold py-3 2xl:text-2xl">Latest posts</h1>
+  <section class="flex flex-col md:flex-row flex-wrap justify-center items-center font-normal">
     {% set postlist = collections.posts | head(-4) %}
     {% set postslistCounter = collections.posts | length %}
     {% include "postslist.njk" %}
@@ -14,7 +14,7 @@ eleventyNavigation:
   {% set postsByYear = collections.postsByYearAndMonth %}
   {% for year, months in postsByYear %}
     <details>
-      <summary class="text-xl">{{year}}</summary>
+      <summary class="text-xl 2xl:text-2xl">{{year}}</summary>
       {% for month, posts in months %}
         <details class="ml-4">
           <summary class="text-xl">{{month}}</summary>
