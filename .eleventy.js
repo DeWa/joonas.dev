@@ -51,6 +51,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy(
     './src/posts/**/*.{png,gif,jpg,webp,avi,avif,mp4,mp3}'
   );
+  eleventyConfig.addPassthroughCopy({ './src/assets/img/favicons/': '/' });
   eleventyConfig.addPassthroughCopy('./src/img');
 
   // Add plugins
