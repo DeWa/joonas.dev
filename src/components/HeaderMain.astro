@@ -15,6 +15,36 @@ import { SITE_TITLE } from '../consts';
   </nav>
 </header>
 
+<script>
+  const logoText = document.getElementById('site-logo');
+  const navLinks = document.getElementById('nav-links');
+  const SCROLL_THRESHOLD = 50;
+
+  if (logoText && navLinks) {
+    if (window.scrollY >= SCROLL_THRESHOLD) {
+      logoText.classList.add('header-text-scrolled');
+      Array.from(navLinks.getElementsByTagName('a')).forEach((link) => {
+        link.classList.add('header-text-scrolled');
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition >= SCROLL_THRESHOLD) {
+        logoText.classList.add('header-text-scrolled');
+        Array.from(navLinks.getElementsByTagName('a')).forEach((link) => {
+          link.classList.add('header-text-scrolled');
+        });
+      } else {
+        logoText.classList.remove('header-text-scrolled');
+        Array.from(navLinks.getElementsByTagName('a')).forEach((link) => {
+          link.classList.remove('header-text-scrolled');
+        });
+      }
+    });
+  }
+</script>
+
 <style>
   header {
     position: fixed;
@@ -59,16 +89,22 @@ import { SITE_TITLE } from '../consts';
   .header-text {
     font-family: 'Russo One', sans-serif;
     text-decoration: none;
+    color: transparent;
     background-color: #666666;
     background-clip: text;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--neon-blue) !important;
-    text-shadow: none !important;
+    text-shadow: 3px 5px 1px rgba(245, 245, 245, 0.5);
     transition:
       color 0.3s ease,
       text-shadow 0.3s ease;
   }
+
+  .header-text-scrolled {
+    color: var(--neon-blue) !important;
+    text-shadow: none !important;
+  }
+
   .nav-links {
     display: flex;
     gap: 2rem;

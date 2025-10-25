@@ -1,6 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
+import HeaderMain from '../components/HeaderMain.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import { SITE_TITLE } from '../consts';
@@ -13,19 +13,8 @@ import '../styles/global.css';
     <BaseHead title={SITE_TITLE} description="DELETE ME" />
   </head>
   <body>
-    <Header />
+    <HeaderMain />
     <Hero />
-    <main class="container">
-      <section class="about-section">
-        <h2 class="retro-title">About Me</h2>
-        <p class="retro-text">I'm a developer!</p>
-      </section>
-
-      <section class="featured-section">
-        <h2 class="retro-title">Featured Projects</h2>
-        <div class="project-grid"></div>
-      </section>
-    </main>
     <Footer />
   </body>
 </html>
