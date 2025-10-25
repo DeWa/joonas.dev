@@ -1,42 +1,58 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-
 :root {
   --neon-pink: #ff00ff;
   --neon-blue: #00ffff;
   --neon-green: #39ff14;
   --dark-bg: #0a0a0a;
-  --grid-color: rgba(0, 255, 255, 0.1);
+  --grid-color: rgba(58, 170, 255, 0.122);
   --retro-font: 'VT323', monospace;
+  --header-font: 'Russo One', sans-serif;
+  --text-font: 'Source Sans', sans-serif;
+  --text-color: #80FFF7;
+  --accent-color: #FF00FF;
+  --muted-color: #7FBFBF;
 }
 
 @font-face {
   font-family: 'VT323';
-  src: url('fonts/VT323-Regular.woff2') format('woff2');
+  src:
+    url('/fonts/VT323-Regular.woff2') format('woff2'),
+    url('/fonts/VT323-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('fonts/OpenSans-Regular.woff2') format('woff2');
+  font-family: 'Source Sans';
+  src:
+    url('/fonts/SourceSans3-Regular.woff2') format('woff2'),
+    url('/fonts/SourceSans3-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('fonts/OpenSans-Bold.woff2') format('woff2');
+  font-family: 'Source Sans';
+  src:
+    url('/fonts/SourceSans3-Bold.woff2') format('woff2'),
+    url('/fonts/SourceSans3-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
+  font-family: 'Source Sans';
+  src:
+    url('/fonts/SourceSans3-Italic.woff2') format('woff2'),
+    url('/fonts/SourceSans3-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
   font-family: 'Russo One';
-  src: url('fonts/RussoOne-Regular.woff2') format('woff2');
+  src:
+    url('/fonts/RussoOne-Regular.woff2') format('woff2'),
+    url('/fonts/RussoOne-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
@@ -44,7 +60,7 @@
 body {
   background-color: var(--dark-bg);
   color: var(--neon-blue);
-  font-family: var(--retro-font);
+  font-family: var(--text-font);
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -52,6 +68,20 @@ body {
   overflow-x: hidden;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  text-decoration-skip-ink: auto;
+}
+
+@keyframes moveGridUp {
+  0% {
+    background-position:
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      0 -50px,
+      0 -50px;
+  }
 }
 
 body::before {
@@ -66,16 +96,18 @@ body::before {
     linear-gradient(90deg, transparent 0%, var(--grid-color) 2%, transparent 3%);
   background-size: 50px 50px;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
+  animation: moveGridUp 4s linear infinite;
 }
 
-main {
-  width: 720px;
-  max-width: calc(100% - 2em);
-  margin: auto;
-  padding: 3em 1em;
-}
 h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--header-font);
+}
 h2,
 h3,
 h4,
@@ -86,19 +118,19 @@ h6 {
   line-height: 1.2;
 }
 h1 {
-  font-size: 3.052em;
+  font-size: 2em;
 }
 h2 {
-  font-size: 2.441em;
+  font-size: 1.75em;
 }
 h3 {
-  font-size: 1.953em;
+  font-size: 1.5em;
 }
 h4 {
-  font-size: 1.563em;
+  font-size: 1.25em;
 }
 h5 {
-  font-size: 1.25em;
+  font-size: 1em;
 }
 strong,
 b {
