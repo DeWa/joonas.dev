@@ -372,21 +372,23 @@ if (canvas && ctx) {
     }
   }
 
+  let frameCount = 0;
+  const framesPerUpdate = 60; // Only apply vignette every 10 frames
+
   function animate(time: number) {
     // Clear the canvas
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, canvas.width / ratio, canvas.height / ratio);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw all text
     drawText(time);
 
     // Draw scanline
     drawScanline();
-
-    // Apply effects
-    applyBloom();
-    applyCurvature();
     applyVignette();
+    //applyBloom();
+    //applyCurvature();
+
+    frameCount++;
 
     requestAnimationFrame(animate);
   }
