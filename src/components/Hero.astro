@@ -1,3 +1,48 @@
+---
+import { getImage } from 'astro:assets';
+import { convertImages } from '../utils/utils';
+
+/** Image imports **/
+import bottomCenterSrc from '../assets/images/bottom-center.png';
+import bottomLeftSrc from '../assets/images/bottom-left.png';
+import bottomRightSrc from '../assets/images/bottom-right.png';
+import topLeftSrc from '../assets/images/top-left.png';
+import topCenterSrc from '../assets/images/top-center.png';
+import topRightSrc from '../assets/images/top-right.png';
+import screenLeftSrc from '../assets/images/screen-left.png';
+import screenRightSrc from '../assets/images/screen-right.png';
+
+const convertedImages = await convertImages([
+  screenLeftSrc,
+  screenRightSrc,
+  topLeftSrc,
+  topCenterSrc,
+  topRightSrc,
+  bottomCenterSrc,
+  bottomLeftSrc,
+  bottomRightSrc,
+]);
+
+const cssVars = {
+  screenLeftImagePngSrc: convertedImages['screen-left'].png.cssUrl,
+  screenRightImagePngSrc: convertedImages['screen-right'].png.cssUrl,
+  topLeftImagePngSrc: convertedImages['top-left'].png.cssUrl,
+  topCenterImagePngSrc: convertedImages['top-center'].png.cssUrl,
+  topRightImagePngSrc: convertedImages['top-right'].png.cssUrl,
+  bottomCenterImagePngSrc: convertedImages['bottom-center'].png.cssUrl,
+  bottomLeftImagePngSrc: convertedImages['bottom-left'].png.cssUrl,
+  bottomRightImagePngSrc: convertedImages['bottom-right'].png.cssUrl,
+  screenLeftImageAvifSrc: convertedImages['screen-left'].avif.cssUrl,
+  screenRightImageAvifSrc: convertedImages['screen-right'].avif.cssUrl,
+  topLeftImageAvifSrc: convertedImages['top-left'].avif.cssUrl,
+  topCenterImageAvifSrc: convertedImages['top-center'].avif.cssUrl,
+  topRightImageAvifSrc: convertedImages['top-right'].avif.cssUrl,
+  bottomCenterImageAvifSrc: convertedImages['bottom-center'].avif.cssUrl,
+  bottomLeftImageAvifSrc: convertedImages['bottom-left'].avif.cssUrl,
+  bottomRightImageAvifSrc: convertedImages['bottom-right'].avif.cssUrl,
+};
+---
+
 <div class="hero">
   <div class="scanline"></div>
   <div class="screen">
@@ -15,7 +60,7 @@
   </div>
 </div>
 <script src="../scripts/screen-animation.ts"></script>
-<style>
+<style define:vars={cssVars}>
   .hero {
     min-height: 100vh;
     width: 100%;
@@ -38,56 +83,64 @@
 
   .screen-top-center {
     grid-area: screen-top-center;
-    background-image: url('../assets/top-center.png');
+    background-image: var(--topCenterImageAvifSrc);
+    background-image: var(--topCenterImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
   .screen-top-left {
     grid-area: screen-top-left;
-    background-image: url('../assets/top-left.png');
+    background-image: var(--topLeftImageAvifSrc);
+    background-image: var(--topLeftImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
   .screen-top-right {
     grid-area: screen-top-right;
-    background-image: url('../assets/top-right.png');
+    background-image: var(--topRightImageAvifSrc);
+    background-image: var(--topRightImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
   .screen-left {
     grid-area: screen-left;
-    background-image: url('../assets/screen_left.png');
+    background-image: var(--screenLeftImageAvifSrc);
+    background-image: var(--screenLeftImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
   .screen-right {
     grid-area: screen-right;
-    background-image: url('../assets/screen_right.png');
+    background-image: var(--screenRightImageAvifSrc);
+    background-image: var(--screenRightImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
   .screen-bottom-center {
     grid-area: screen-bottom-center;
-    background-image: url('../assets/bottom-center.png');
+    background-image: var(--bottomCenterImageAvifSrc);
+    background-image: var(--bottomCenterImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
   .screen-bottom-left {
     grid-area: screen-bottom-left;
-    background-image: url('../assets/bottom-left.png');
+    background-image: var(--bottomLeftImageAvifSrc);
+    background-image: var(--bottomLeftImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
   .screen-bottom-right {
     grid-area: screen-bottom-right;
-    background-image: url('../assets/bottom-right.png');
+    background-image: var(--bottomRightImageAvifSrc);
+    background-image: var(--bottomRightImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
