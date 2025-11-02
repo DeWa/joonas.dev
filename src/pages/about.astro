@@ -1,63 +1,262 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Avatar from '../assets/images/avatar.png';
+import { Image } from 'astro:assets';
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<html lang="en">
+  <head>
+    <style>
+      main {
+        margin-top: 2rem;
+      }
+      .avatar-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2em;
+      }
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+      .about-me-container {
+        text-align: center;
+        margin: 3em auto 4em auto;
+        max-width: 700px;
+        padding: 0 2em;
+      }
+      .about-me-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5em;
+        background: linear-gradient(90deg, #00fff7, #ff6ec7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .subtitle {
+        font-size: 1.5rem;
+        color: var(--neon-blue);
+        font-family: var(--retro-font);
+        margin-bottom: 1em;
+      }
+      .description {
+        font-size: 1.2rem;
+        color: rgb(var(--gray));
+        line-height: 1.8;
+        margin-bottom: 1.5em;
+      }
+      .description p {
+        margin-bottom: 1.2em;
+      }
+      .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        max-width: 1200px;
+        margin: 0 auto 2.5em auto;
+        padding: 0 2em;
+      }
+      .top-cards-row {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+      }
+      .stats-card {
+        background: rgba(10, 10, 20, 0.82);
+        border: 1.5px solid rgba(57, 255, 20, 0.18);
+        border-radius: 18px;
+        box-shadow:
+          0 2px 16px 0 rgba(57, 255, 20, 0.08),
+          0 0 0 1.5px rgba(57, 255, 20, 0.12) inset;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 2em;
+      }
+      .stats-card h3 {
+        color: var(--neon-green);
+        font-family: var(--header-font);
+        margin-top: 0;
+      }
+      .stats-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: var(--neon-blue);
+        font-family: var(--retro-font);
+        font-size: 1.08rem;
+      }
+      .skills-container {
+        background: rgba(10, 10, 20, 0.82);
+        border: 1.5px solid rgba(58, 170, 255, 0.13);
+        border-radius: 18px;
+        box-shadow: 0 2px 16px 0 rgba(58, 170, 255, 0.08);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 2em;
+      }
+      .skills-container h3 {
+        color: var(--neon-blue);
+        font-family: var(--header-font);
+        margin-top: 0;
+      }
+      .skills-list-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5em;
+      }
+      .skills-list {
+        flex: 1 1 180px;
+        min-width: 180px;
+        color: var(--neon-green);
+        font-family: var(--retro-font);
+        font-size: 1.08rem;
+        margin: 0;
+      }
+      .now-container {
+        background: rgba(10, 10, 20, 0.82);
+        border: 1.5px solid rgba(57, 255, 20, 0.13);
+        border-radius: 18px;
+        box-shadow: 0 2px 16px 0 rgba(57, 255, 20, 0.08);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 2em;
+      }
+      .now-container h3 {
+        color: var(--neon-green);
+        font-family: var(--header-font);
+        margin-top: 0;
+      }
+      .now-container p {
+        color: rgb(var(--gray));
+        font-size: 1.08rem;
+      }
+      .interests-card {
+        background: rgba(10, 10, 20, 0.82);
+        border: 1.5px solid rgba(255, 111, 199, 0.18);
+        border-radius: 18px;
+        box-shadow: 0 2px 16px 0 rgba(255, 111, 199, 0.08);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 2em;
+      }
+      .interests-card h3 {
+        color: #ff6ec7;
+        font-family: var(--header-font);
+        margin-top: 0;
+      }
+      .interests-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .interests-list li {
+        color: var(--neon-green);
+        font-family: var(--retro-font);
+        font-size: 1.08rem;
+        padding: 0.5em 1em;
+        background: rgba(57, 255, 20, 0.1);
+        border: 1px solid rgba(57, 255, 20, 0.2);
+        border-radius: 12px;
+      }
+      @media (min-width: 900px) {
+        .top-cards-row {
+          flex-direction: row;
+        }
+        .stats-card {
+          flex: 1;
+        }
+        .skills-container {
+          flex: 1;
+        }
+      }
+      @media (max-width: 720px) {
+        .about-me-container h2 {
+          font-size: 2rem;
+        }
+        .subtitle {
+          font-size: 1.2rem;
+        }
+        .description {
+          font-size: 1rem;
+        }
+        .cards-container {
+          padding: 0 1em;
+        }
+      }
+    </style>
+    <BaseHead title="About Me" description="Designer, developer, and digital tinkerer." />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="about-me-container">
+        <h2>Moro! I'm Joonas 👋</h2>
+        <div class="subtitle">Developer, Generalist & Digital Tinkerer</div>
+        <div class="description">
+          <p>
+            I'm a web developer with over 10 years of experience building scalable, high-quality
+            projects from the ground up to the production stage.
+          </p>
+          <p>
+            While the web is my core domain, I consider myself to be a generalist. I enjoy building
+            things - whether it's a web app, mobile app, game, or even embedded electronics projects
+            - and that curiosity drives me to constantly learn new technologies. When I come up with
+            a new idea, I dive in and figure out how to bring it to life.
+          </p>
+          <p>
+            I love solving problems, experimenting with new ideas, and crafting products that feel
+            great to use.
+          </p>
+        </div>
+      </div>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+      <div class="cards-container">
+        <div class="top-cards-row">
+          <div class="stats-card">
+            <h3>Quick Stats</h3>
+            <ul class="stats-list">
+              <li>- Based in Oulu, Finland</li>
+              <li>- Coding since 2001</li>
+              <li>
+                - Experience in web development, UI/UX design, mobile development, game development,
+                embedded systems, and more
+              </li>
+            </ul>
+          </div>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+          <div class="skills-container">
+            <h3>Skills & Tools</h3>
+            <div class="skills-list-container">
+              <ul class="skills-list">
+                <li>TypeScript / JavaScript</li>
+                <li>React/Vue/Angular</li>
+                <li>CSS / Sass / Tailwind</li>
+                <li>Node.js / Python / Go / Godot</li>
+                <li>React Native</li>
+                <li>AWS / GCP</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+        <!-- <div class="now-container">
+          <h3>Now</h3>
+          <p></p>
+        </div> -->
+
+        <div class="interests-card">
+          <h3>Interests & Hobbies</h3>
+          <ul class="interests-list">
+            <li>Video Games</li>
+            <li>Synthwave music</li>
+            <li>Movies</li>
+            <li>Gadgets and electronics</li>
+          </ul>
+        </div>
+      </div>
+      <Footer />
+    </main>
+  </body>
+</html>
