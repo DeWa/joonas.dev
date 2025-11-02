@@ -8,7 +8,7 @@ import { Image } from 'astro:assets';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
 ---
 
 <html lang="en">
@@ -22,12 +22,15 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       .hero-image {
         width: 100%;
         padding-bottom: 1.5rem;
+        height: 460px;
       }
       .hero-image img {
         display: block;
         margin: 0 auto;
         border-radius: 12px;
         box-shadow: var(--box-shadow);
+        height: 100%;
+        object-fit: cover;
       }
       .blog-post-container {
         display: flex;
@@ -82,12 +85,44 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         line-height: 1;
         text-shadow: 0 0 6px rgba(0, 255, 247, 0.4);
       }
+      .title-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 0.5em;
+      }
+      .title-header h1 {
+        margin: 0;
+      }
       .date {
         margin-bottom: 0.5em;
         color: rgb(var(--gray));
       }
       .last-updated-on {
         font-style: italic;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        background: rgba(0, 255, 247, 0.1);
+        border: 1px solid rgba(0, 255, 247, 0.3);
+        color: #00fff7;
+        transition: all 0.2s ease;
+      }
+      .tag:hover {
+        background: rgba(0, 255, 247, 0.2);
+        border-color: rgba(0, 255, 247, 0.5);
+        box-shadow: 0 0 8px rgba(0, 255, 247, 0.3);
       }
       p {
         max-width: 65ch;
@@ -128,7 +163,18 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                 )
               }
             </div>
-            <h1>{title}</h1>
+            <div class="title-header">
+              <h1>{title}</h1>
+              {
+                tags && tags.length > 0 && (
+                  <div class="tags">
+                    {tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                )
+              }
+            </div>
             <hr />
           </div>
           <div class="prose">
