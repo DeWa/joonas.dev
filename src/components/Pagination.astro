@@ -101,7 +101,7 @@ const showLastEllipsis = endPage < Number(length) - 1;
     {
       paginationList.slice(startPage - 1, endPage).map((num) => (
         <a
-          href={`${firstUrl}${num == 1 ? '' : '/' + num}`}
+          href={`${currentUrl.replace(/\/[0-9]+$/, '')}/${num}`}
           class={`pagination__button pagination__button--number ${currentPage == num ? 'pagination__button--active' : ''}`}
           aria-label={`Go to page ${num}`}
           aria-current={currentPage == num ? 'page' : undefined}
