@@ -56,8 +56,8 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 
       .prose {
         font-size: 1.2rem;
-        line-height: 1.6;
-        max-width: 80ch;
+        letter-spacing: 0.01em;
+        line-height: 1.7;
         overflow-y: scroll;
         color: var(--text-color);
         -moz-osx-font-smoothing: grayscale;
@@ -79,7 +79,6 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
         text-shadow: 0 0 6px rgba(0, 255, 247, 0.4);
       }
       .title {
-        margin-bottom: 1em;
         padding: 1em 0;
         text-align: center;
         line-height: 1;
@@ -133,8 +132,19 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
       .tag span {
         display: block;
       }
-      p {
-        max-width: 65ch;
+      hr {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 255, 247, 0.3) 20%,
+          rgba(0, 255, 247, 0.5) 50%,
+          rgba(255, 110, 199, 0.5) 50%,
+          rgba(255, 110, 199, 0.3) 80%,
+          transparent 100%
+        );
+        box-shadow: 0 0 8px rgba(0, 255, 247, 0.2);
+        margin: 1.5em 0;
       }
 
       @media (max-width: 960px) {
