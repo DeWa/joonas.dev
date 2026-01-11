@@ -8,7 +8,6 @@ import type { ImageMetadata } from 'astro';
 import { Icon } from 'astro-icon/components';
 import asciitosImage from '../assets/images/projects/asciitos.png';
 
-// Uses Remix icons
 interface Project {
   title: string;
   description: string;
@@ -19,11 +18,15 @@ interface Project {
   tech?: string;
 }
 
-// Define your projects here
 const projects: Project[] = [
   {
     title: 'Asciitos',
-    description: 'TUI-design tool',
+    description: `I started this project while developing a terminal-based hockey manager game, where I needed a tool to design the 
+    user interface before implementing it in code. Existing tools had several limitations—for example, they didn't allow defining 
+    different foreground and background colors for individual characters, which is essential for TUIs.
+\
+\
+The project is still ongoing, it's not beatiful and really needs some work, but it's already mature enough to be used in my own development workflow.`,
     image: asciitosImage,
     website: 'https://dewa.github.io/asciitos/',
     github: 'https://github.com/DeWa/asciitos',
@@ -35,6 +38,10 @@ const projects: Project[] = [
       'Photobooth application made for Raspberry Pi and Raspberry Pi camera. Used graphical UI, selectable frames and automatic upload to web',
     github: 'https://github.com/DeWa/PiBooth',
     tech: 'Python, Raspberry Pi, Kivy, AWS',
+  },
+  {
+    title: 'More to come...',
+    description: `I still have some projects that I haven't updated here, but I will add them soon.`,
   },
 ];
 ---
@@ -154,14 +161,10 @@ const projects: Project[] = [
         box-shadow: 0 0 8px rgba(255, 110, 199, 0.3);
       }
       .project-image {
-        position: absolute;
-        top: 0;
-        right: 0;
         width: 40%;
         height: 100%;
         overflow: hidden;
         z-index: 1;
-        border-left: 1px solid rgba(58, 170, 255, 0.3);
         background: linear-gradient(
           to right,
           rgba(10, 10, 20, 0.98) 0%,
