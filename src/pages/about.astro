@@ -30,6 +30,32 @@ import Header from '../components/Header.astro';
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+      .wave-emoji {
+        display: inline-block;
+        animation: wave 3s ease-in-out infinite;
+        transform-origin: 70% 70%;
+        -webkit-text-fill-color: initial; /* Fixes blurry text */
+      }
+      @keyframes wave {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        10%,
+        30% {
+          transform: rotate(14deg);
+        }
+        20% {
+          transform: rotate(-8deg);
+        }
+        40%,
+        60% {
+          transform: rotate(-4deg);
+        }
+        50% {
+          transform: rotate(10deg);
+        }
+      }
       .subtitle {
         font-size: 1.5rem;
         color: var(--neon-blue);
@@ -146,7 +172,7 @@ import Header from '../components/Header.astro';
         flex-wrap: wrap;
         gap: 1em;
         list-style: none;
-        padding: 0;
+        padding: 1rem 0;
         margin: 0;
       }
       .interests-list li {
@@ -190,7 +216,7 @@ import Header from '../components/Header.astro';
     <Header />
     <main>
       <div class="about-me-container">
-        <h2>Moro! I'm Joonas 👋</h2>
+        <h2>Moro! I'm Joonas <span class="wave-emoji">👋</span></h2>
         <div class="subtitle">Developer, Generalist & Digital Tinkerer</div>
         <div class="description">
           <p>
@@ -216,7 +242,7 @@ import Header from '../components/Header.astro';
             <h3>Quick Stats</h3>
             <ul class="stats-list">
               <li>- Based in Oulu, Finland</li>
-              <li>- Coding since 2001</li>
+              <li>- Coding since 2001 (Started with QuickBasic)</li>
               <li>
                 - Experience in web development, UI/UX design, mobile development, game development,
                 embedded systems, and more
@@ -238,12 +264,6 @@ import Header from '../components/Header.astro';
             </div>
           </div>
         </div>
-
-        <!-- <div class="now-container">
-          <h3>Now</h3>
-          <p></p>
-        </div> -->
-
         <div class="interests-card">
           <h3>Interests & Hobbies</h3>
           <ul class="interests-list">
