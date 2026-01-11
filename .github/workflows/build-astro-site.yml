@@ -25,7 +25,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: "recursive"
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Detect package manager
         id: detect-package-manager
         run: |
