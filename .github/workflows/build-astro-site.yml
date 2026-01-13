@@ -25,15 +25,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: false
-          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
-      - name: Configure Git for submodules
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN }}
+      - name: Debug submodules
         run: |
-          git config --global url."https://${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
-          git config --global url."https://${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}@github.com/".insteadOf "git@github.com:"
-      - name: Update submodules
-        run: |
-          git submodule update --init --recursive
+          git submodule status
+          git config --list
       - name: Detect package manager
         id: detect-package-manager
         run: |
