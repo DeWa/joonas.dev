@@ -2,7 +2,7 @@
 
 My personal website and blog made with Astro
 
-![Site Preview](https://img.shields.io/badge/Status-Offline-brightgreen?style=for-the-badge&color=c0c0c0)
+![Site Preview](https://img.shields.io/badge/Status-Online-brightgreen?style=for-the-badge)
 ![Astro](https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
