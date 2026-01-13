@@ -30,10 +30,6 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.PAT_TOKEN }}
-      - name: Debug submodules
-        run: |
-          git submodule status
-          git config --list
       - name: Detect package manager
         id: detect-package-manager
         run: |
