@@ -89,7 +89,7 @@ const canvas = document.getElementById('typingCanvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 const ratio = window.devicePixelRatio;
 
-if (canvas && ctx) {
+const run = () => {
   // Set canvas size
   canvas.width = canvas.offsetWidth * ratio;
   canvas.height = canvas.offsetHeight * ratio;
@@ -392,6 +392,13 @@ if (canvas && ctx) {
 
     requestAnimationFrame(animate);
   }
-
   requestAnimationFrame(animate);
+};
+
+async function waitForAssets() {
+  await document.fonts.load('1rem "VT323"');
+}
+
+if (canvas && ctx) {
+  waitForAssets().then(run);
 }
