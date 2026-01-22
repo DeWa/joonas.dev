@@ -59,7 +59,6 @@ const cssVars = {
     <div class="screen-bottom-right"></div>
   </div>
 </div>
-<script src="../scripts/screen-animation.ts"></script>
 <style define:vars={cssVars}>
   .hero {
     min-height: 100vh;
@@ -83,66 +82,106 @@ const cssVars = {
 
   .screen-top-center {
     grid-area: screen-top-center;
-    background-image: var(--topCenterImageAvifSrc);
     background-image: var(--topCenterImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  @supports (background-image: var(--topCenterImageAvifSrc)) {
+    .screen-top-center {
+      background-image: var(--topCenterImageAvifSrc);
+    }
+  }
+
   .screen-top-left {
     grid-area: screen-top-left;
-    background-image: var(--topLeftImageAvifSrc);
     background-image: var(--topLeftImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  @supports (background-image: var(--topLeftImageAvifSrc)) {
+    .screen-top-left {
+      background-image: var(--topLeftImageAvifSrc);
+    }
+  }
+
   .screen-top-right {
     grid-area: screen-top-right;
-    background-image: var(--topRightImageAvifSrc);
     background-image: var(--topRightImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  @supports (background-image: var(--topRightImageAvifSrc)) {
+    .screen-top-right {
+      background-image: var(--topRightImageAvifSrc);
+    }
+  }
+
   .screen-left {
     grid-area: screen-left;
-    background-image: var(--screenLeftImageAvifSrc);
     background-image: var(--screenLeftImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  @supports (background-image: var(--screenLeftImageAvifSrc)) {
+    .screen-left {
+      background-image: var(--screenLeftImageAvifSrc);
+    }
+  }
+
   .screen-right {
     grid-area: screen-right;
-    background-image: var(--screenRightImageAvifSrc);
     background-image: var(--screenRightImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  @supports (background-image: var(--screenRightImageAvifSrc)) {
+    .screen-right {
+      background-image: var(--screenRightImageAvifSrc);
+    }
+  }
+
   .screen-bottom-center {
     grid-area: screen-bottom-center;
-    background-image: var(--bottomCenterImageAvifSrc);
     background-image: var(--bottomCenterImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  @supports (background-image: var(--bottomCenterImageAvifSrc)) {
+    .screen-bottom-center {
+      background-image: var(--bottomCenterImageAvifSrc);
+    }
+  }
+
   .screen-bottom-left {
     grid-area: screen-bottom-left;
-    background-image: var(--bottomLeftImageAvifSrc);
     background-image: var(--bottomLeftImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  @supports (background-image: var(--bottomLeftImageAvifSrc)) {
+    .screen-bottom-left {
+      background-image: var(--bottomLeftImageAvifSrc);
+    }
+  }
+
   .screen-bottom-right {
     grid-area: screen-bottom-right;
-    background-image: var(--bottomRightImageAvifSrc);
     background-image: var(--bottomRightImagePngSrc);
     background-size: 100% 100%;
     background-repeat: no-repeat;
+  }
+
+  @supports (background-image: var(--bottomRightImageAvifSrc)) {
+    .screen-bottom-right {
+      background-image: var(--bottomRightImageAvifSrc);
+    }
   }
 
   .screen-content {
@@ -196,3 +235,4 @@ const cssVars = {
       0 0 20px var(--neon-blue);
   }
 </style>
+<script src="../scripts/screen-animation.ts"></script>
